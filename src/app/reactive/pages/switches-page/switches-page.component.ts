@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-switches-page',
+  selector: 'reactive-switches-page',
   standalone: false,
   styles: ``,
   templateUrl: './switches-page.component.html',
