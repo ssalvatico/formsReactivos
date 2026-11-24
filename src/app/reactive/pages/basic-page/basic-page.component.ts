@@ -1,0 +1,13 @@
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-basic-page',
+  standalone: false,
+  templateUrl: './basic-page.component.html',
+  styles: `
+    :host {
+      display: block;
+    }
+  `,
+})
+export class BasicPageComponent {}
