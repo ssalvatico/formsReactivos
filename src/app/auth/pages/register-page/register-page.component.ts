@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-register-page',
-  imports: [],
+  standalone: false,
   templateUrl: './register-page.component.html',
   styles: `
     :host {
@@ -10,4 +10,4 @@ import { Component } from '@angular/core';
     }
   `,
 })
-export class RegisterPage {}
+export class RegisterPageComponent {}
