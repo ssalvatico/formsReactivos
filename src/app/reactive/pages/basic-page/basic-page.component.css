@@ -76,24 +76,6 @@
 
 .input-group .custom-input { border-radius: 0 8px 8px 0; }
 
-/* Botón */
-
-.btn-save {
-    padding: 11px 24px;
-    border-radius: 8px;
-    font-weight: 600;
-    font-size: 0.9rem;
-    background-color: #4f46e5;
-    border-color: #4f46e5;
-    transition: all 0.2s ease;
-}
-
-.btn-save:hover {
-    background-color: #4338ca;
-    border-color: #4338ca;
-    transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(79, 70, 229, 0.2);
-}
 
 /* Badge */
 
@@ -147,29 +129,22 @@
     font-size: 0.85rem;
 }
 
-/* Errores */
-
-.invalid-feedback {
-    font-size: 0.82rem; margin-top: 6px;
-}
-
 /* Responsive */
 
 @media (max-width: 576px) {
     .page-title { font-size: 1.45rem;
-}
+    }
 
-.card-body {
-    padding: 20px !important;
-}
+    .card-body {
+        padding: 20px !important;
+    }
 
-.section-header {
-    align-items: flex-start;
-    gap: 10px;
-}
+    .section-header {
+        align-items: flex-start;
+        gap: 10px;
+    }
 
-.btn-save {
-    width: 100%;
-}
-
+    .btn-save {
+        width: 100%;
+    }
 }

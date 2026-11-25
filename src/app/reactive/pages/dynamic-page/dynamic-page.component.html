@@ -1,90 +1,138 @@
-<h2>Reactivos: <small> Dinámicos </small></h2>
-<hr>
+<div class="reactive-container">
 
-<form autocomplete="off">
-
-    <!-- Nombre -->
-    <div class="mb-3 row">
-        <label class="col-sm-3 col-form-label">Nombre</label>
-        <div class="col-sm-9">
-            <input class="form-control"
-                   placeholder="Nombre de la persona">
-            <span class="form-text text-danger">
-                   error message
-            </span>
-        </div>
+    <div class="page-header">
+        <h2>Reactivos <small>Dinámicos</small></h2>
+        <p>Gestiona tus datos y tus juegos favoritos.</p>
     </div>
 
-    <!-- Agregar Favorito -->
-    <div class="mb-3 row">
-        <label class="col-sm-3 col-form-label">Agregar</label>
-        <div class="col-sm-9">
+    <div class="form-card">
 
-            <div class="input-group">
-                <input class="form-control"
-                       placeholder="Agregar favorito">
+        <form [formGroup]="myForm" (ngSubmit)="onSubmit()" autocomplete="off">
 
+            <!-- Nombre -->
+            <div class="mb-4 row">
+                <label class="col-sm-3 col-form-label">Nombre</label>
+                <div class="col-sm-9">
+                    <input
+                        class="form-control"
+                        placeholder="Nombre de la persona"
+                        formControlName="name"
+                    >
+                    @if (isNotValidField('name')) {
+                        <span class="form-text invalid-feedback d-block">
+                            {{ getFieldError('name') }}
+                        </span>
+                    }
+                </div>
+            </div>
 
-                <button class="btn btn-outline-primary"
-                        type="button">
-                    Agregar favorito
+            <!-- Agregar Favorito -->
+            <div class="mb-4 row">
+                <label class="col-sm-3 col-form-label">Agregar</label>
+                <div class="col-sm-9">
+                    <div class="input-group">
+                        <input
+                            class="form-control"
+                            placeholder="Escribe un juego favorito..."
+                            [formControl]="newFavorite"
+                        >
+                        <button
+                            class="btn-subtle theme-success"
+                            type="button"
+                            (click)="onAddFavorite()"
+                        >
+                            Agregar favorito
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Lista de favoritos -->
+            <div class="mb-4 row">
+                <label class="col-sm-3 col-form-label">Favoritos</label>
+
+                <div class="col-sm-9" formArrayName="favoriteGames">
+
+                    @for (game of favoriteGames.controls; track $index; let i = $index) {
+                        <div class="favorite-item">
+
+                            <div class="input-group">
+                                <input
+                                    class="form-control"
+                                    [formControlName]="i"
+                                >
+
+                                <button
+                                    class="theme-danger btn-subtle"
+                                    type="button"
+                                    (click)="onDeleteFavourite(i)"
+                                >
+                                    Eliminar
+                                </button>
+                            </div>
+
+                            @if (isNotValidFieldInArray(favoriteGames, i)) {
+                                <span class="form-text invalid-feedback d-block">
+                                    {{ getFieldErrorInArray(favoriteGames, i) }}
+                                </span>
+                            }
+
+                        </div>
+                    }
+
+                    @if (favoriteGames.length === 0) {
+                        <div class="empty-state">
+                            Todavía no agregaste juegos favoritos.
+                        </div>
+                    }
+
+                </div>
+            </div>
+
+            <div class="form-footer">
+                <button
+                    type="submit"
+                    class="theme-accent btn-subtle rounded-pill btn-save float-end"
+                >
+                    Guardar
                 </button>
             </div>
-        </div>
+
+        </form>
+
     </div>
 
+    <!-- Información del formulario -->
+    <div class="table-responsive">
+        <table class="table modern-table align-middle mb-0">
+            <thead>
+                <tr>
+                    <th>Propiedad</th>
+                    <th>Valor</th>
+                </tr>
+            </thead>
 
-    <!-- Lista de Juegos Favoritos -->
-    <div class="mb-3 row">
-        <label class="col-sm-3 col-form-label">Favoritos</label>
-        <div class="col-sm-9">
+            <tbody>
+                <tr>
+                    <td>Estado del formulario - Valid</td>
+                    <td>{{ myForm.valid | json }}</td>
+                </tr>
 
-            <div class="mb-1">
+                <tr>
+                    <td>Valores del formulario - Value</td>
+                    <td><code>{{ myForm.value | json }}</code></td>
+                </tr>
 
-                <div class="input-group">
-                    <input class="form-control">
+                <tr>
+                    <td>Nuevo favorito - Valid</td>
+                    <td>{{ newFavorite.valid | json }}</td>
+                </tr>
 
-                    <button class="btn btn-outline-danger"
-                            type="button">
-                      Eliminar
-                  </button>
-                </div>
-                <span class="form-text text-danger">
-                   Este campo es requerido
-                </span>
-
-            </div>
-
-        </div>
+                <tr>
+                    <td>Nuevo favorito - Value</td>
+                    <td><code>{{ newFavorite.value | json }}</code></td>
+                </tr>
+            </tbody>
+        </table>
     </div>
-
-
-
-    <div class="row">
-        <div class="col-sm-12">
-            <button type="submit"
-                    class="btn btn-primary float-end"
-                    >
-                    <!-- [disabled]="myForm.invalid" -->
-                Guardar
-            </button>
-        </div>
-    </div>
-
-
-</form>
-
-
-
-<span>Valid</span>
-<pre>{{ 'object' | json }}</pre>
-<br>
-
-<span>Value</span>
-<pre>{{ 'object' | json }}</pre>
-<br>
-
-<span>Agregar Juego</span>
-<pre>{{ 'object' | json }}</pre>
-<pre>{{ 'object' | json }}</pre>
-
+</div>

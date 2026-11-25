@@ -53,12 +53,53 @@ app-root {
 
 /* Responsive */
 
-@media (max-width: 768px) { .app-container { padding: 15px; }
+@media (max-width: 768px) {
+    .app-container { 
+        padding: 15px; 
+    }
 
-.main-content,
-.sidebar-content {
-    min-height: auto;
+    .main-content, .sidebar-content {
+        min-height: auto;
+    }
 }
 
+/* Errores */
 
+.invalid-feedback {
+    font-size: 0.82rem; margin-top: 6px;
+}
+
+/* Botón */
+
+.btn-save {
+    padding: 11px 24px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: all 0.2s ease;
+}
+
+.btn-save:hover {
+    transform: translate(-1px, -1px);
+    box-shadow: 6px 6px 12px rgba(78, 70, 229, 0.438);
+}
+
+.btn-save:active {
+    animation: buttonPress 0.35s ease;
+}
+
+@keyframes buttonPress {
+    0% {
+        transform: translate(0, 0);
+    }
+    40% {
+        transform: translate(3px, 3px);
+        box-shadow: none;
+    }
+    70% {
+        transform: translate(3px, 3px);
+        box-shadow: none;
+    }
+    100% {
+        transform: translate(0, 0);
+    }
 }
