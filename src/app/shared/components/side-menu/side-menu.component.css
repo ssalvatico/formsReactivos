@@ -1,0 +1,114 @@
+:host {
+    display: block;
+    min-height: 100%;
+    background-color: #f8fafc;
+    color: #1e293b;
+}
+
+/* Encabezado */
+
+.page-title {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #1e293b;
+    letter-spacing: -0.5px;
+}
+
+/* Tarjetas */
+
+.menu-card {
+    background-color: #ffffff;
+    border: 1px solid #e9eef5 !important;
+    border-radius: 14px;
+    transition: all 0.2s ease;
+}
+
+.menu-card:hover {
+    box-shadow: 0 8px 25px rgba(15, 23, 42, 0.06) !important;
+}
+
+/* Encabezado de cada sección */
+
+.menu-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.menu-header h5 {
+    font-weight: 650;
+    color: #1e293b;
+}
+
+
+/* Lista */
+
+.modern-list {
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.modern-list .list-group-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 13px 15px;
+    border: 1px solid #edf0f5;
+    color: #475569;
+    font-size: 0.92rem;
+    font-weight: 500;
+    background-color: #ffffff;
+    transition: all 0.2s ease;
+}
+
+.modern-list .list-group-item + .list-group-item {
+    border-top: 0;
+}
+
+/* Flecha */
+
+.modern-list .list-group-item i {
+    color: #94a3b8;
+    font-size: 0.85rem;
+    transition: all 0.2s ease;
+}
+
+/* Hover */
+
+.modern-list .list-group-item:hover {
+    background-color: #f8fafc;
+    color: #4f46e5;
+    padding-left: 20px;
+}
+
+.modern-list .list-group-item:hover i {
+    color: #4f46e5;
+    transform: translateX(3px);
+}
+
+/* Elemento activo */
+
+.modern-list .list-group-item.active {
+    background-color: #eef2ff;
+    border-color: #e0e7ff;
+    color: #4f46e5;
+    font-weight: 650;
+}
+
+.modern-list .list-group-item.active i {
+    color: #4f46e5;
+}
+
+/* Responsive */
+
+@media (max-width: 576px) {
+    .page-title {
+    font-size: 1.45rem;
+}
+
+.menu-card .card-body {
+    padding: 20px !important;
+}
+
+
+}

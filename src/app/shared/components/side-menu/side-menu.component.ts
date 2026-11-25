@@ -8,13 +8,11 @@ interface MenuItem {
   selector: 'shared-side-menu',
   standalone: false,
   templateUrl: './side-menu.component.html',
-  styles: `
-    :host {
-      display: block;
-    }
-  `,
+  styleUrl: './side-menu.component.css',
 })
 export class SideMenuComponent {
+
+  public selectedItem = '';
 
   public reactiveMenu: MenuItem[] = [
     {title: 'Basicos', route: './reactive/basic'},

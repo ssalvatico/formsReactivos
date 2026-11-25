@@ -1,11 +1,17 @@
-<div class="row mt-5">
+<div class="row g-4">
 
+    <!-- Contenido principal -->
     <div class="col-8">
-        <router-outlet></router-outlet>
+        <main class="main-content">
+            <router-outlet></router-outlet>
+        </main>
     </div>
 
+    <!-- Menú lateral -->
     <div class="col-4">
-        <shared-side-menu></shared-side-menu>
+        <aside class="sidebar-content">
+            <shared-side-menu></shared-side-menu>
+        </aside>
     </div>
 
 </div>
