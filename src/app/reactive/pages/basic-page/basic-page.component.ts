@@ -1,31 +1,22 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { minLength } from '@angular/forms/signals';
+import { ValidatorService } from '../../../shared/services/validator.service';
 
 @Component({
   selector: 'reactive-basic-page',
   standalone: false,
   templateUrl: './basic-page.component.html',
-  styleUrl: './basic-page.component.css',
 })
 export class BasicPageComponent implements OnInit{
 
-  // public myForm:FormGroup = new FormGroup({
-  //   name: new FormControl('', [], []),
-  //   price: new FormControl(0, [], []),
-  //   inStorage: new FormControl(0, [], []),
-  // });
-
   public myForm:FormGroup;
 
-  public errorMessages = {
-    "required"  : "Este campo es obligatorio",
-    "minLength" : "Este campo requiere 3 caracteres o más",
-    "min"       : "Este campo debe ser mayor a 0",
-  };
-
-  // para hacerlo con Angular, puedo injectar un servicio de angular forms
-  constructor( private formBuilder:FormBuilder ) {
+  // para hacerlo con Angular, puedo injectar un servicio de angular forms (FormBuilder)
+  constructor(
+    private formBuilder:FormBuilder,
+    private validatorService:ValidatorService,
+  ) {
     this.myForm = this.formBuilder.group({
       name      : ['', [Validators.required, Validators.minLength(3)], ],
       price     : [0, [Validators.required, Validators.min(0)], ],
@@ -38,8 +29,7 @@ export class BasicPageComponent implements OnInit{
   }
 
   isNotValidField( field: string ): boolean | null {
-    return this.myForm.controls[field].errors
-    && this.myForm.controls[field].touched;
+    return this.validatorService.isNotValidField(this.myForm, field);
   }
 
   //? i18nSelect ?

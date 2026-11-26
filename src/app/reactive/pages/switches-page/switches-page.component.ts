@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ValidatorService } from '../../../shared/services/validator.service';
 
 @Component({
   selector: 'reactive-switches-page',
   standalone: false,
-  styleUrl: './switches-page.component.css',
   templateUrl: './switches-page.component.html',
 })
 export class SwitchesPageComponent implements OnInit {
@@ -16,7 +16,10 @@ export class SwitchesPageComponent implements OnInit {
     wantNotifications: false,
   };
 
-  constructor(private formBuilder:FormBuilder){
+  constructor(
+      private formBuilder:FormBuilder,
+      private validatorService:ValidatorService,
+    ) {
     this.myForm = this.formBuilder.group({
       gender:[ 'M',[Validators.required], ],
       wantNotifications: [ true, [Validators.required], ],
@@ -28,8 +31,7 @@ export class SwitchesPageComponent implements OnInit {
   }
 
   isNotValidField( field: string ): boolean | null {
-    return this.myForm.controls[field].errors
-    && this.myForm.controls[field].touched;
+    return this.validatorService.isNotValidField(this.myForm, field);
   }
 
   onSave(){

@@ -13,28 +13,28 @@
             <label class="col-sm-3 col-form-label">Género</label>
             <div class="col-sm-9">
 
-                <div class="form-check">
+                <div class="form-field">
                     <input
-                        class="form-check-input"
+                        class="radio theme-accent"
                         type="radio"
                         value="M"
                         id="radioMasculino"
                         formControlName="gender"
                     >
-                        <label class="form-check-label" for="radioMasculino">
+                        <label for="radioMasculino">
                             Masculino
                         </label>
                 </div>
 
-                <div class="form-check">
+                <div class="form-field">
                     <input
-                        class="form-check-input"
+                        class="radio theme-accent"
                         type="radio"
                         value="F"
                         id="radioFemenino"
                         formControlName="gender"
                     >
-                        <label class="form-check-label" for="radioFemenino">
+                        <label for="radioFemenino">
                             Femenino
                         </label>
                 </div>
@@ -66,14 +66,14 @@
         <div class="row mb-3">
             <label class="col-sm-3 col-form-label"></label>
             <div class="col-sm-9">
-                <div class="form-check">
+                <div class="form-field">
                     <input
-                        class="form-check-input"
+                        class="check theme-accent"
                         type="checkbox"
                         id="flexCheckDefault"
                         formControlName="termsAndConditions"
                     >
-                        <label class="form-check-label" for="flexCheckDefault">
+                        <label for="flexCheckDefault">
                             Términos y condiciones de uso
                         </label>
                 </div>
@@ -95,16 +95,33 @@
     </form>
 </div>
 
-<h5>Valor del formulario</h5>
-<pre>{{ myForm.value | json }}</pre>
-<br>
+<div class="table-responsive">
+    <table class="table modern-table align-middle mb-0">
+        <thead>
+            <tr>
+                <th>Propiedad</th>
+                <th>Valor</th>
+            </tr>
+        </thead>
 
-<h5>Persona</h5>
-<pre>{{ person | json }}</pre>
-<br>
+        <tbody>
+            <tr>
+                <td>Valor del formulario - Value</td>
+                <td><code>{{ myForm.value | json }}</code></td>
+            </tr>
 
-<h5>Valid</h5>
-<pre>{{ myForm.valid | json }}</pre>
+            <tr>
+                <td>Persona - Value</td>
+                <td><code>{{ person | json }}</code></td>
+            </tr>
+
+            <tr>
+                <td>Estado del formulario - Valid</td>
+                <td>{{ myForm.valid | json }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
 
 <!-- <h5>Términos</h5> -->
 <!-- <pre>{{ myForm.controls?.terminos?.errors | json }}</pre> -->

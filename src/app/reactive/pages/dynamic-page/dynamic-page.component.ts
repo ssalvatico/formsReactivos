@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { ValidatorService } from '../../../shared/services/validator.service';
 
 @Component({
   selector: 'reactive-dynamic-page',
   standalone: false,
-  styleUrl: './dynamic-page.component.css',
   templateUrl: './dynamic-page.component.html',
 })
 export class DynamicPageComponent {
@@ -16,7 +16,10 @@ export class DynamicPageComponent {
   //   favoriteGames: new FormArray
   // })
 
-  constructor(private formBuilder:FormBuilder){
+  constructor(
+      private formBuilder:FormBuilder,
+      private validatorService:ValidatorService,
+    ) {
       this.myForm = this.formBuilder.group({
         name: ['',[Validators.required, Validators.minLength(3)]],
         //*
@@ -33,8 +36,7 @@ export class DynamicPageComponent {
   }
 
   isNotValidField( field: string ): boolean | null {
-    return this.myForm.controls[field].errors
-    && this.myForm.controls[field].touched;
+    return this.validatorService.isNotValidField(this.myForm, field);
   }
 
   isNotValidFieldInArray(formArray: FormArray, i:number){
