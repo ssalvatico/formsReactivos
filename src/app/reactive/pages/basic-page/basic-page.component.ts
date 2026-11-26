@@ -58,7 +58,6 @@ export class BasicPageComponent implements OnInit{
       this.myForm.markAllAsTouched();
       return;
     }
-    console.log(this.myForm.value);
     this.myForm.reset();
   }
 }

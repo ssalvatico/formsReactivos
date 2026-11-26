@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { App } from './app.component';
 import { SharedModule } from './shared/shared.module';
+import { HttpClient } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { SharedModule } from './shared/shared.module';
   ],
   providers: [
     provideBrowserGlobalErrorListeners(),
+    HttpClient,
   ],
   bootstrap: [App]
 })

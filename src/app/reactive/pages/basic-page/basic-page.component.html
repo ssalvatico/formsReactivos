@@ -75,7 +75,7 @@
 
                 <!-- Botón -->
                 <div class="d-flex justify-content-end pt-2">
-                    <button type="submit" class="btn-subtle theme-accent btn-save">
+                    <button type="submit" class="theme-accent btn-subtle rounded-pill btn-save float-end">
                         Guardar producto
                     </button>
                 </div>
@@ -83,73 +83,60 @@
             </form>
         </div>
     </div>
-</div>
-<!-- Información de depuración -->
-<div class="card border-0 shadow-sm debug-card">
 
-    <div class="card-body p-4">
+    <!-- Información de depuración -->
+    <div class="table-responsive">
+        <table class="table modern-table align-middle mb-0">
 
-        <div class="mb-3">
-            <h5 class="mb-1">Estado del formulario</h5>
-            <small class="text-muted">
-                Información de validación y valores actuales.
-            </small>
-        </div>
+            <thead>
+                <tr>
+                    <th>Propiedad</th>
+                    <th>Valor</th>
+                </tr>
+            </thead>
 
-        <div class="table-responsive">
-            <table class="table modern-table align-middle mb-0">
+            <tbody>
+                <tr>
+                    <td>Valid</td>
+                    <td>{{ myForm.valid | json }}</td>
+                </tr>
 
-                <thead>
-                    <tr>
-                        <th>Propiedad</th>
-                        <th>Valor</th>
-                    </tr>
-                </thead>
+                <tr>
+                    <td>Pristine</td>
+                    <td>{{ myForm.pristine | json }}</td>
+                </tr>
 
-                <tbody>
-                    <tr>
-                        <td>Valid</td>
-                        <td>{{ myForm.valid | json }}</td>
-                    </tr>
+                <tr>
+                    <td>Touched</td>
+                    <td>{{ myForm.touched | json }}</td>
+                </tr>
 
-                    <tr>
-                        <td>Pristine</td>
-                        <td>{{ myForm.pristine | json }}</td>
-                    </tr>
+                <tr>
+                    <td>Value</td>
+                    <td><code>{{ myForm.value | json }}</code></td>
+                </tr>
 
-                    <tr>
-                        <td>Touched</td>
-                        <td>{{ myForm.touched | json }}</td>
-                    </tr>
+                <tr>
+                    <td>Precio</td>
+                    <td>{{ myForm.controls['price'].value | json }}</td>
+                </tr>
 
-                    <tr>
-                        <td>Value</td>
-                        <td><code>{{ myForm.value | json }}</code></td>
-                    </tr>
+                <tr>
+                    <td>Precio - Errors</td>
+                    <td><code>{{ myForm.controls['price'].errors | json }}</code></td>
+                </tr>
 
-                    <tr>
-                        <td>Precio</td>
-                        <td>{{ myForm.controls['price'].value | json }}</td>
-                    </tr>
+                <tr>
+                    <td>Producto</td>
+                    <td>{{ myForm.controls['name'].value | json }}</td>
+                </tr>
 
-                    <tr>
-                        <td>Precio - Errors</td>
-                        <td><code>{{ myForm.controls['price'].errors | json }}</code></td>
-                    </tr>
+                <tr>
+                    <td>Producto - Errors</td>
+                    <td><code>{{ myForm.controls['name'].errors | json }}</code></td>
+                </tr>
+            </tbody>
 
-                    <tr>
-                        <td>Producto</td>
-                        <td>{{ myForm.controls['name'].value | json }}</td>
-                    </tr>
-
-                    <tr>
-                        <td>Producto - Errors</td>
-                        <td><code>{{ myForm.controls['name'].errors | json }}</code></td>
-                    </tr>
-                </tbody>
-
-            </table>
-        </div>
-
+        </table>
     </div>
 </div>

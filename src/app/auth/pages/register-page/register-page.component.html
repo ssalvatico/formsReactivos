@@ -1,15 +1,25 @@
-<h2>Validaciones Reactivas</h2>
-<hr>
+<div class="reactive-container">
+    <div class="page-header">
+        <h2>Validaciones <small>Reactivas</small></h2>
+    </div>
+    <hr>
 
-<div class="row">
-    <div class="col">
-
-        <form autocomplete="off" [formGroup]="myForm" (ngSubmit)="onSave()">
-
-            <!-- Nombre -->
-            <div class="row mb-3">
-                <label class="col-sm-3 col-form-label">Nombre y apellido</label>
-                <div class="col-sm-9">
+    <div class="card border-0 shadow-sm form-card mb-4">
+        <div class="card-body p-4">
+            <div class="section-header mb-4">
+                <div>
+                    <h5 class="mb-1">Información del usuario</h5>
+                    <small class="text-muted">Completá los siguientes campos</small>
+                </div>
+                <span class="badge bg-primary-subtle text-primary">
+                    Creación de usuario
+                </span>
+            </div>
+            
+            <form autocomplete="off" [formGroup]="myForm" (ngSubmit)="onSave()">
+                <!-- Nombre -->
+                <div class="mb-3">
+                    <label class="form-label">Nombre y apellido</label>
                     <input
                         type="text"
                         class="form-control"
@@ -22,12 +32,10 @@
                         </span>
                     }
                 </div>
-            </div>
 
-            <!-- Email -->
-            <div class="row mb-3">
-                <label class="col-sm-3 col-form-label">Email</label>
-                <div class="col-sm-9">
+                <!-- Email -->
+                <div class="mb-3">
+                    <label class="form-label">Email</label>
                     <input
                         type="email"
                         class="form-control"
@@ -40,12 +48,10 @@
                         </span>
                     }
                 </div>
-            </div>
 
-            <!-- Username -->
-            <div class="row mb-3">
-                <label class="col-sm-3 col-form-label">Username</label>
-                <div class="col-sm-9">
+                <!-- Username -->
+                <div class="mb-3">
+                    <label class="form-label">Username</label>
                     <input
                         type="text"
                         class="form-control"
@@ -58,12 +64,10 @@
                         </span>
                     }
                 </div>
-            </div>
 
-            <!-- Password -->
-            <div class="row mb-3">
-                <label class="col-sm-3 col-form-label">Password</label>
-                <div class="col-sm-9">
+                <!-- Password -->
+                <div class="mb-3">
+                    <label class="form-label">Password</label>
                     <input
                         type="password"
                         class="form-control"
@@ -76,12 +80,10 @@
                         </span>
                     }
                 </div>
-            </div>
 
-            <!-- Password2 -->
-            <div class="row mb-3">
-                <label class="col-sm-3 col-form-label">Confirmar</label>
-                <div class="col-sm-9">
+                <!-- Password2 -->
+                <div class="mb-3">
+                    <label class="form-label">Confirmar</label>
                     <input
                         type="password"
                         class="form-control"
@@ -94,41 +96,80 @@
                         </span>
                     }
                 </div>
-            </div>
 
-            <div class="row">
-                <div class="col">
-                    <button
-                        class="btn btn-primary float-end"
-                        type="submit"
-                    >Crear
+                <!-- Botón -->
+                <div class="d-flex justify-content-end pt-2">
+                    <button type="submit" class="theme-accent btn-subtle rounded-pill btn-save float-end">
+                        Crear Usuario
                     </button>
                 </div>
-            </div>
-        </form>
+
+            </form>
+        </div>
+    </div>
+
+
+    <div class="table-responsive">
+        <table class="table modern-table align-middle mb-0">
+            <thead>
+                <tr>
+                    <th>Propiedad</th>
+                    <th>Valor</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr>
+                    <td>Valid</td>
+                    <td>{{ myForm.valid | json }}</td>
+                </tr>
+
+                <tr>
+                    <td>Pristine</td>
+                    <td>{{ myForm.pristine | json }}</td>
+                </tr>
+
+                <tr>
+                    <td>Touched</td>
+                    <td>{{ myForm.touched | json }}</td>
+                </tr>
+
+                <tr>
+                    <td>Value</td>
+                    <td><code>{{ myForm.value | json }}</code></td>
+                </tr>
+
+                <tr>
+                    <td>Status</td>
+                    <td>{{ myForm.status }}</td>
+                </tr>
+
+                <tr>
+                    <td>Nombre</td>
+                    <td>{{ myForm.value.name | json }}</td>
+                </tr>
+
+                <tr>
+                    <td>Email</td>
+                    <td>{{ myForm.value.email | json }}</td>
+                </tr>
+
+                <tr>
+                    <td>Username</td>
+                    <td>{{ myForm.value.username | json }}</td>
+                </tr>
+
+                <tr>
+                    <td>Password</td>
+                    <td>{{ myForm.value.password | json }}</td>
+                </tr>
+
+                <tr>
+                    <td>Confirmar</td>
+                    <td>{{ myForm.controls['password2'].errors | json }}</td>
+                </tr>
+            </tbody>
+
+        </table>
     </div>
 </div>
-
-
-<h2>Form Valid: {{ myForm.valid }}</h2>
-<h2>Form Status: {{ myForm.status }}</h2>
-<h2>Form Pending: {{ myForm.pending }}</h2>
-<h2>Form errors</h2>
-<pre>{{ myForm.errors | json }}</pre>
-
-<h5>Nombre</h5>
-<pre>{{ myForm.value.name | json }}</pre>
-
-<h5>Email</h5>
-<pre>{{ myForm.controls['email'].errors | json }}</pre>
-
-<h5>Username</h5>
-<pre>{{ myForm.controls['username'].errors | json }}</pre>
-
-
-<h5>Password</h5>
-<pre>{{ myForm.value.password | json }}</pre>
-
-<h5>Confirmar</h5>
-<pre>{{ myForm.value.password2 | json }}</pre>
-
