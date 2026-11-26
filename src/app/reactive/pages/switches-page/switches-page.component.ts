@@ -4,7 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 @Component({
   selector: 'reactive-switches-page',
   standalone: false,
-  styles: ``,
+  styleUrl: './switches-page.component.css',
   templateUrl: './switches-page.component.html',
 })
 export class SwitchesPageComponent implements OnInit {

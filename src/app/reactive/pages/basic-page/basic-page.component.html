@@ -1,91 +1,89 @@
-<!-- Encabezado -->
-<div class="mb-4">
-    <h2 class="page-title">Reactivos básicos</h2>
-    <p class="text-muted mb-0">
-        Administración de productos, precios y existencias.
-    </p>
-</div>
+<div class="reactive-container">
+    <div class="page-header">
+        <h2>Reactivos <small>Básicos</small></h2>
+        <p>Administración de productos, precios y existencias.</p>
+    </div>
 
-<!-- Formulario -->
-<div class="card border-0 shadow-sm form-card mb-4">
-    <div class="card-body p-4">
+    <!-- Formulario -->
+    <div class="card border-0 shadow-sm form-card mb-4">
+        <div class="card-body p-4">
 
-        <div class="section-header mb-4">
-            <div>
-                <h5 class="mb-1">Información del producto</h5>
-                <small class="text-muted">Completá los siguientes campos</small>
-            </div>
-            <span class="badge bg-primary-subtle text-primary">
-                Nuevo registro
-            </span>
-        </div>
-
-        <form [formGroup]="myForm"
-              (ngSubmit)="onSave()"
-              autocomplete="off">
-
-            <!-- Producto -->
-            <div class="mb-4">
-                <label class="form-label">Producto</label>
-
-                <input type="text"
-                       class="form-control custom-input"
-                       placeholder="Ej: Teclado inalámbrico"
-                       formControlName="name">
-
-                @if (isNotValidField('name')) {
-                    <div class="invalid-feedback d-block">
-                        {{ getFieldError('name') }}
-                    </div>
-                }
+            <div class="section-header mb-4">
+                <div>
+                    <h5 class="mb-1">Información del producto</h5>
+                    <small class="text-muted">Completá los siguientes campos</small>
+                </div>
+                <span class="badge bg-primary-subtle text-primary">
+                    Nuevo registro
+                </span>
             </div>
 
-            <!-- Precio -->
-            <div class="mb-4">
-                <label class="form-label">Precio</label>
+            <form [formGroup]="myForm"
+                (ngSubmit)="onSave()"
+                autocomplete="off">
 
-                <div class="input-group">
-                    <span class="input-group-text">$</span>
-                    <input type="number"
-                           class="form-control custom-input"
-                           placeholder="0.00"
-                           formControlName="price">
+                <!-- Producto -->
+                <div class="mb-4">
+                    <label class="form-label">Producto</label>
+
+                    <input type="text"
+                        class="form-control custom-input"
+                        placeholder="Ej: Teclado inalámbrico"
+                        formControlName="name">
+
+                    @if (isNotValidField('name')) {
+                        <div class="invalid-feedback d-block">
+                            {{ getFieldError('name') }}
+                        </div>
+                    }
                 </div>
 
-                @if (isNotValidField('price')) {
-                    <div class="invalid-feedback d-block">
-                        {{ getFieldError('price') }}
+                <!-- Precio -->
+                <div class="mb-4">
+                    <label class="form-label">Precio</label>
+
+                    <div class="input-group">
+                        <span class="input-group-text">$</span>
+                        <input type="number"
+                            class="form-control custom-input"
+                            placeholder="0.00"
+                            formControlName="price">
                     </div>
-                }
-            </div>
 
-            <!-- Existencias -->
-            <div class="mb-4">
-                <label class="form-label">Existencias</label>
+                    @if (isNotValidField('price')) {
+                        <div class="invalid-feedback d-block">
+                            {{ getFieldError('price') }}
+                        </div>
+                    }
+                </div>
 
-                <input type="number"
-                       class="form-control custom-input"
-                       placeholder="Cantidad disponible"
-                       formControlName="inStorage">
+                <!-- Existencias -->
+                <div class="mb-4">
+                    <label class="form-label">Existencias</label>
 
-                @if (isNotValidField('inStorage')) {
-                    <div class="invalid-feedback d-block">
-                        {{ getFieldError('inStorage') }}
-                    </div>
-                }
-            </div>
+                    <input type="number"
+                        class="form-control custom-input"
+                        placeholder="Cantidad disponible"
+                        formControlName="inStorage">
 
-            <!-- Botón -->
-            <div class="d-flex justify-content-end pt-2">
-                <button type="submit" class="btn-subtle theme-accent btn-save">
-                    Guardar producto
-                </button>
-            </div>
+                    @if (isNotValidField('inStorage')) {
+                        <div class="invalid-feedback d-block">
+                            {{ getFieldError('inStorage') }}
+                        </div>
+                    }
+                </div>
 
-        </form>
+                <!-- Botón -->
+                <div class="d-flex justify-content-end pt-2">
+                    <button type="submit" class="btn-subtle theme-accent btn-save">
+                        Guardar producto
+                    </button>
+                </div>
+
+            </form>
+        </div>
     </div>
 </div>
-
 <!-- Información de depuración -->
 <div class="card border-0 shadow-sm debug-card">
 
